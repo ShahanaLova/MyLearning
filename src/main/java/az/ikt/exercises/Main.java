@@ -1,4 +1,4 @@
 package az.ikt.exercises;
 
-public class main {
+public class Main {
 }

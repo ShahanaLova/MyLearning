@@ -2,7 +2,7 @@ package az.ikt.exercises;
 
 import java.util.ArrayList;
 
-public class ListExercise1 {
+public class ListExerciseSortNumbers {
     public static void main(String[] args) {
         ArrayList<Integer> x = new ArrayList<Integer>();
 
