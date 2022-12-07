@@ -1,6 +1,8 @@
 package az.ikt.exercises;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class SetExerciseRowColumnPosition {
     public static void main(String[] args) {
@@ -10,8 +12,7 @@ public class SetExerciseRowColumnPosition {
         System.out.println("Please enter column index");
         int column = input.nextInt();
 
-        Set<Set<int>>
-
+        Set<Set<Integer>> Matris = new HashSet<>();
 
 
     }
