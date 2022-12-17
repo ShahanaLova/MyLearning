@@ -1,6 +1,8 @@
 package az.ikt.exercises.Exercise31;
 
-public class Person extends Human implements Ability{
+import java.io.Serializable;
+
+public class Person extends Human implements Ability, Serializable {
 
     private Human mother ;
     private Human father;
@@ -10,10 +12,10 @@ public class Person extends Human implements Ability{
     }
 
 
-    public Person(String name, String surname, int age, Human father, Human mother) {
-        super(name, surname, age);
-        this.mother = mother;
+    public Person(String name, String surname, int age,Gender gender, Human father, Human mother) {
+        super(name, surname, age,gender);
         this.father = father;
+        this.mother = mother;
     }
 
     public Human getMother() {

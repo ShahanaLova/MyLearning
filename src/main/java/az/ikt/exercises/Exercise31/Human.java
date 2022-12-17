@@ -1,6 +1,8 @@
 package az.ikt.exercises.Exercise31;
 
-public abstract  class Human { // bir shexsiyyet olmadigina gore abstract edirik
+import java.io.Serializable;
+
+public abstract  class Human implements Serializable { // bir shexsiyyet olmadigina gore abstract edirik
     private String name;
     private String surname;
     private int age;
@@ -11,10 +13,11 @@ public abstract  class Human { // bir shexsiyyet olmadigina gore abstract edirik
     public Human() {
     }
 
-    public Human(String name, String surname, int age) {
+    public Human(String name, String surname, int age, Gender gender) {
         this.name = name;
         this.surname = surname;
         setAge(age);
+        this.gender = gender;
 
     }
 

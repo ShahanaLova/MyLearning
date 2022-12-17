@@ -9,8 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List children = new ArrayList((Collection) person);
-        children.add(new Person("Sehane","logmanova",))
+     Application.run();
 
     }
 
