@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) throws IOException {
         LoadPeople();
 
-        File file = new File("C:\\Users\\logmanovasn\\IdeaProjects\\MyLearning\\target\\text.txt");
+        File file = new File("C:\\Users\\logmanovasn\\IdeaProjects\\MyLearning\\src\\main\\java\\az\\ikt\\exercises\\text.txt");
 //        FileOutputStream writer = new FileOutputStream(file);
 //        ObjectOutputStream oos = new ObjectOutputStream(writer);
 //        oos.writeObject(PeopleSortedName());
