@@ -7,6 +7,8 @@ import az.ikt.exercises.smallapp.repository.UserRepository;
 import az.ikt.exercises.smallapp.repository.impl.PersonRepoCollectionImpl;
 import az.ikt.exercises.smallapp.repository.impl.UserRepoCollectionImpl;
 
+import java.util.Formatter;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ public class UserService {
         user.setId(nextId);
 
         checkUsername(user);
-        Person person = new Person();
+        Person person = getPerson(personId);
 
         user.setPerson(person);
         userRepo.save(user);
@@ -46,5 +48,17 @@ public class UserService {
                 .map(User::getUsername)
                 .collect(Collectors.toList())
                 .contains(username);
+    }
+    public void showUsers(){
+//        System.out.println();
+//        userRepo.getAll().forEach(System.out::println);
+//        System.out.println();
+        Formatter fmt = new Formatter();
+        fmt.format("%15s %15s %15s\n", "UserName", "Password", "PersonId");
+        for (User user : userRepo.getAll())
+        {
+            fmt.format("%14s %14s %17s\n", user.getUsername(), "*".repeat(user.getPassword().length()), user.getPerson().getId());
+        }
+        System.out.println(fmt);
     }
 }

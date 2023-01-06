@@ -36,6 +36,6 @@ public class UserRepoCollectionImpl implements UserRepository {
 
     @Override
     public Long findMaxId() {
-        return map.isEmpty()?0: Collections.max(map.entrySet(), Map.Entry.comparingByKey()).getKey();
+        return map.isEmpty() ? 0 : Collections.max(map.entrySet(), Map.Entry.comparingByKey()).getKey();
     }
 }

@@ -1,11 +1,8 @@
 package az.ikt.exercises.Exercise31;
 
-import org.w3c.dom.ls.LSOutput;
 
-import javax.imageio.plugins.jpeg.JPEGImageReadParam;
 import java.io.*;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -15,7 +12,7 @@ public class Application {
     public static void main(String[] args) throws IOException {
         LoadPeople();
 
-        File file = new File("C:\\Users\\IKT  LAB\\MyLearning\\target\\text.txt");
+        File file = new File("C:\\Users\\logmanovasn\\IdeaProjects\\MyLearning\\target\\text.txt");
 //        FileOutputStream writer = new FileOutputStream(file);
 //        ObjectOutputStream oos = new ObjectOutputStream(writer);
 //        oos.writeObject(PeopleSortedName());
@@ -24,8 +21,8 @@ public class Application {
         FileInputStream reader = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(reader);
 
-        int i=ois.read();
-        System.out.print((char)i);
+        int i = ois.read();
+        System.out.print((char) i);
 
         ois.close();
 
@@ -67,14 +64,14 @@ public class Application {
         //LoadPeople();
         // people.stream().forEach(System.out::println);
         people.stream().filter(s -> s.getAge() == people.stream()
-                .mapToDouble(Person::getAge)
-                .max()
-                .orElse(0))
+                        .mapToDouble(Person::getAge)
+                        .max()
+                        .orElse(0))
                 .forEach(System.out::println);
     }
 
     public static List<Person> PeopleSortedName() {
-         return people.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
+        return people.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
 
     }
 
