@@ -24,7 +24,7 @@ public class ScannerUtil {
         person.setSurname(sc.nextLine());
 
         System.out.println("Enter father name: \n");
-        person.setFathername(sc.nextLine());
+        person.setFatherName(sc.nextLine());
 
         System.out.println("Enter age: \n");
         person.setAge(sc.nextByte());

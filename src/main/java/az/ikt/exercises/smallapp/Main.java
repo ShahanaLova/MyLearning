@@ -2,7 +2,7 @@ package az.ikt.exercises.smallapp;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         System.out.println("=============> WELCOME TO USER REGISTRATION APP <=============");
         System.out.println("===>");
         System.out.println("======>");
@@ -10,7 +10,11 @@ public class Main {
         System.out.println("============>");
 
 
-        Application.run();
+        try {
+            Application.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         System.out.println("<============");
         System.out.println("<=========");

@@ -3,9 +3,10 @@ package az.ikt.exercises.smallapp.service;
 import az.ikt.exercises.smallapp.model.Person;
 import az.ikt.exercises.smallapp.repository.PersonRepository;
 import az.ikt.exercises.smallapp.repository.impl.PersonRepoCollectionImpl;
+import az.ikt.exercises.smallapp.repository.impl.PersonRepoJdbcImpl;
 
 public class PersonService {
-    public static final PersonRepository personRepository = new PersonRepoCollectionImpl();
+    public static final PersonRepository personRepository = new PersonRepoJdbcImpl();
 
     public void savePerson(Person person) {
         Long nextId = personRepository.findMaxId() + 1;

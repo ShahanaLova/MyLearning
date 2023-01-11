@@ -3,6 +3,7 @@ package az.ikt.exercises.smallapp;
 import az.ikt.exercises.smallapp.model.Commands;
 import az.ikt.exercises.smallapp.model.Person;
 import az.ikt.exercises.smallapp.model.User;
+import az.ikt.exercises.smallapp.repository.impl.PersonRepoJdbcImpl;
 import az.ikt.exercises.smallapp.service.PersonService;
 import az.ikt.exercises.smallapp.service.UserService;
 

@@ -13,7 +13,7 @@ public class Person {
     private String name;
     private String surname;
     private String fathername;
-    private byte age;
+    private int age;
     private Gender gender;
 
     public Person() {
@@ -52,19 +52,19 @@ public class Person {
         this.surname = surname;
     }
 
-    public String getFathername() {
+    public String getFatherName() {
         return fathername;
     }
 
-    public void setFathername(String fathername) {
+    public void setFatherName(String fathername) {
         this.fathername = fathername;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(byte age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -100,5 +100,7 @@ public class Person {
                 ", gender=" + gender +
                 '}';
     }
+
+
 }
 
