@@ -30,20 +30,27 @@ public class PersonRepoJdbcImpl implements PersonRepository {
     public Long findMaxId() {
 
         try {
-            ResultSet rs = stmt.executeQuery(Sql.FIND_MAX_ID.getValue());
-
-            return rs.getLong("max_id");
+            ResultSet rs = stmt.executeQuery(Sql.FIND_MAX_PERSONID.getValue());
+            while (rs.next()) {
+                return rs.getLong("max");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return 0L;
         }
+        return 0L;
     }
+
 
     @Override
     public void save(Person person) {
 
         try {
-            stmt.execute("insert into person(id, name,surname,fathername,age, gender) values" + "(" + person.getId() + "," + person.getName() + "," + person.getSurname() + "," + person.getFatherName() + "," + person.getAge() + "," + person.getGender() + ");");
+            stmt.execute("insert into person(id, name,surname,fathername,age, gender)" +
+                    String.format("values('%s', '%s', '%s', '%s', '%s', '%s')",
+                            person.getId(), person.getName(), person.getSurname(),
+                            person.getFatherName(), person.getAge(), person.getGender()
+                    ));
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -81,22 +88,22 @@ public class PersonRepoJdbcImpl implements PersonRepository {
     @Override
     public Person getById(Long aLong) {
         try {
-            ResultSet rs = stmt.executeQuery("select id,name, surname,fathername,age, gender from person where id = " + aLong +";");
-            Person person = new Person();
-            person.setId(rs.getLong("id"));
-            person.setName(rs.getString("name"));
-            person.setSurname(rs.getString("surname"));
-            person.setFatherName(rs.getString("fathername"));
-            person.setAge(rs.getInt("age"));
-            person.setGender(Gender.valueOf(rs.getString("gender")));
-
-
-            return person;
-
+            ResultSet rs = stmt.executeQuery("select id,name, surname,fathername,age, gender from person where id = " + aLong + ";");
+            while (rs.next()) {
+                Person person = new Person();
+                person.setId(rs.getLong("id"));
+                person.setName(rs.getString("name"));
+                person.setSurname(rs.getString("surname"));
+                person.setFatherName(rs.getString("fathername"));
+                person.setAge(rs.getInt("age"));
+                person.setGender(Gender.valueOf(rs.getString("gender")));
+                return person;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
+        return new Person();
     }
 
     @Override
@@ -111,7 +118,7 @@ public class PersonRepoJdbcImpl implements PersonRepository {
     @Override
     public void deleteById(Long aLong) {
         try {
-            stmt.execute("delete from person where id = "+ aLong +";");
+            stmt.execute("delete from person where id = " + aLong + ";");
         } catch (SQLException e) {
             e.printStackTrace();
         }

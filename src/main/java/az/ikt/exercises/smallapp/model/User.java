@@ -7,7 +7,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private Person person;
+    private long personId;
 
     public Long getId() {
         return id;
@@ -33,12 +33,12 @@ public class User {
         this.password = password;
     }
 
-    public Person getPerson() {
-        return person;
+    public long getPersonId() {
+        return personId;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPersonId(long personId) {
+        this.personId =personId ;
     }
 
     @Override
@@ -46,12 +46,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(person, user.person);
+        return personId == user.personId && Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, person);
+        return Objects.hash(id, username, password, personId);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", person=" + person +
+                ", person=" + personId +
                 '}';
     }
 }

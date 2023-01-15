@@ -5,7 +5,9 @@ import az.ikt.exercises.smallapp.model.User;
 import az.ikt.exercises.smallapp.repository.PersonRepository;
 import az.ikt.exercises.smallapp.repository.UserRepository;
 import az.ikt.exercises.smallapp.repository.impl.PersonRepoCollectionImpl;
+import az.ikt.exercises.smallapp.repository.impl.PersonRepoJdbcImpl;
 import az.ikt.exercises.smallapp.repository.impl.UserRepoCollectionImpl;
+import az.ikt.exercises.smallapp.repository.impl.UserRepoJDBCImpl;
 
 import java.util.Formatter;
 import java.util.List;
@@ -13,9 +15,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UserService {
-    public static final UserRepository userRepo = new UserRepoCollectionImpl();
+    public static final UserRepository userRepo = new UserRepoJDBCImpl();
 
-    public static final PersonRepository personRepo = new PersonRepoCollectionImpl();
+    public static final PersonRepository personRepo = new PersonRepoJdbcImpl();
 
     public void registerUser(User user, Long personId){
         Long nextId = userRepo.findMaxId()+1;
@@ -24,7 +26,7 @@ public class UserService {
         checkUsername(user);
         Person person = getPerson(personId);
 
-        user.setPerson(person);
+        user.setPersonId(person.getId());
         userRepo.save(user);
         System.out.println("====================");
         System.out.println(userRepo.getAll());
@@ -57,7 +59,7 @@ public class UserService {
         fmt.format("%15s %15s %15s\n", "UserName", "Password", "PersonId");
         for (User user : userRepo.getAll())
         {
-            fmt.format("%14s %14s %17s\n", user.getUsername(), "*".repeat(user.getPassword().length()), user.getPerson().getId());
+            fmt.format("%14s %14s %17s\n", user.getUsername(), "*".repeat(user.getPassword().length()), user.getPersonId());
         }
         System.out.println(fmt);
     }
